@@ -1,639 +1,335 @@
-- [1. Ordinal Numbers](#1-ordinal-numbers)
-  - [Code Inspiration](#ordinal-numbers-code-inspiration)
-  - [Exercises](#ordinal-numbers-exercises)
-- [2. Testing Frameworks](#2-testing-frameworks)
-  - [Code Inspiration](#testing-frameworks-code-inspiration)
-  - [Exercises](#testing-frameworks-exercises)
-- [3. Starting a Project](#3-starting-a-project)
-  - [Code Inspiration](#starting-a-project-code-inspiration)
-  - [Exercises](#starting-a-project-exercises)
-- [4. Using Packages](#4-using-packages)
-  - [Code Inspiration](#using-packages-code-inspiration)
-  - [Exercises](#using-packages-exercises)
-- [5. Installing Jest](#5-installing-jest)
-  - [Code Inspiration](#installing-jest-code-inspiration)
-  - [Exercises](#installing-jest-exercises)
-- [6. Jest's API](#6-jests-api)
-  - [Code Inspiration](#jests-api-code-inspiration)
-  - [Exercises](#jests-api-exercises)
-- [7. First Test Case](#7-first-test-case)
-  - [Code Inspiration](#first-test-case-code-inspiration)
-  - [Exercises](#first-test-case-exercises)
-- [8. Anonymous Functions](#8-anonymous-functions)
-  - [Code Inspiration](#anonymous-functions-code-inspiration)
-  - [Exercises](#anonymous-functions-exercises)
-- [9. Arrow Functions](#9-arrow-functions)
-  - [Code Inspiration](#arrow-functions-code-inspiration)
-  - [Exercises](#arrow-functions-exercises)
-- [10. Solving Problems While Testing](#10-solving-problems-while-testing)
-  - [Code Inspiration](#solving-problems-while-testing-code-inspiration)
-  - [Exercises](#solving-problems-while-testing-exercises)
+## Week 6 : 🔗 Problem Solving Workshop  
+## Problem Solving 1: Drawing Stairs
 
----
+### 1. Introduction
+This series of problem solving exercises are based on problems found on [Codewars](https://www.codewars.com/) or [Hackerank](https://www.hackerrank.com/dashboard).
 
-## 1. Ordinal Numbers
+#### What you should already know
+You should have attended the previous problem solving session. You will have learned the outline procedure for solving problems by:
 
-### Ordinal Numbers Code Inspiration
+- Understanding what the problem statement is asking you to do
+- Using abstraction to identify what is important
+- Using decomposition to break the problem down into smaller problems.
+- Solve the smaller problems, one at a time
+- You will get more practice on that today.
 
-1. **Basic ordinal number converter**
-```javascript
-function getOrdinal(n) {
-  // Converts a number to its ordinal form (1st, 2nd, 3rd, etc.)
-  const s = ["th", "st", "nd", "rd"];
-  const v = n % 100;
-  return n + (s[(v - 20) % 10] || s[v] || s[0]);
+#### What you'll learn
+- How to use abstraction
+- ow to use decomposition
+- How to use repetition
+- What you'll need
+- No specific tools are required, although you will need to make notes so either pencil and paper or a text editor on your laptop.
+
+#### What you'll do
+You will be presented with a problem. You will learn how to understand the problem and break the problem down into steps that help you work towards a solution.
+
+### 2. Problem Description
+Todays problem can be found here: https://www.codewars.com/kata/5b4e779c578c6a898e0005c5.
+
+After the class finishes, you should submit a solution to the problem using the link above.
+
+### Story
+We want to output a drawing of some stairs.
+
+### Problem
+Given a number `n`, draw stairs using the letter `"I"`, `n` tall and `n` wide, with the tallest in the top left.
+
+Examples:
+We are given two examples.
+
+Example 1
+For example, `n = 3` would return:
+```js
+"I\n␣I\n␣␣I"
+```
+
+If you print that string in a `console.log` it would look look like this:
+```js
+I
+␣I
+␣␣I
+``` 
+_Note_ that the ␣ character represents a space and `\n` is a newline. These characters are part of a group of characters known as "white space" characters and when printed are invisible. Another white space character is a tab, written as `\t` in Javascript. The `␣` is only shown here so that we can see and count spaces. A space intended to be printed like this is part of a string in Javascript so should be surrounded by quote characters. Note that `""` is an empty string where as `" "` is a string containing one space.
+
+### Example 2
+Another example, a 7-step stairs should be drawn like this:
+```js
+I
+␣I
+␣␣I
+␣␣␣I
+␣␣␣␣I
+␣␣␣␣␣I
+␣␣␣␣␣␣I
+```
+
+### Code Template
+```js
+function drawStairs(n) {
+  // your code here
 }
 ```
 
-2. **Date formatting with ordinals**
-```javascript
-function formatDateWithOrdinal(day, month, year) {
-  // Returns a date string with ordinal day (e.g., "January 1st, 2023")
-  const months = ["January", "February", "March", "April", "May", "June",
-                 "July", "August", "September", "October", "November", "December"];
-  return `${months[month-1]} ${getOrdinal(day)}, ${year}`;
+### 3. Understanding the problem
+- Make sure you understand the problem.
+- Discuss any questions as a group before continuing.
+
+### 4. Identify what is important
+- Make a list of all the features that look important. Ignore anything that is not essential to solving the problem. In this problem, look for patterns.
+- Discuss your solution to this step as a group. Does everyone have the same list of important elements or are there differences? Resolve your differences so everyone agrees what is important.
+
+### 5. Important characteristics of the problem
+- The input to the function is `n`, representing the number of steps.
+- The function should return the complete string (although we could optionally print it before returning the string).
+- We are building up a string containing only the characters; `space`, `I`, and `\n`.
+- There will be exactly `n` occurences of `I` in each string.
+- Every `I` except the final one will be followed by a `\n` and a number of spaces to correctly format the string.
+
+### 6. Understand the examples
+We are given two examples. Here they are again.
+
+For example, `n = 3` would return:
+```js
+"I\n␣I\n␣␣I"
+``` 
+
+If you print that string in a `console.log` it would look look like this:
+```js
+I
+␣I
+␣␣I
+```
+Another example, a 7-step stairs should be drawn like this:
+```js
+I
+␣I
+␣␣I
+␣␣␣I
+␣␣␣␣I
+␣␣␣␣␣I
+␣␣␣␣␣␣I
+```
+
+1. In the 3-step example we are shown the actual string and what it looks like printed. In the 7-step example we are only shown what it looks like printed. Write down what the actual string will be for the 7-step example.
+2. Write down the string generated when n is 1.
+3. Write down the string generated when n is 5.
+4. Do you notice any patterns?
+
+### 7. Explanation of the examples
+Lets put the examples in order of the value of `n`.
+
+When `n = 1`, the return string is:
+```js
+"I"
+```
+When n = 3 the return string is:
+```js
+"I\n␣I\n␣␣I"
+```
+When n is equal to 5, the returned string is:
+```js
+"I\n␣I\n␣␣I\n␣␣␣I\n␣␣␣␣I"
+```
+When n is equal to 7, the returned string is:
+```js
+"I\n␣I\n␣␣I\n␣␣␣I\n␣␣␣␣I\n␣␣␣␣␣I\n␣␣␣␣␣␣I"
+```
+#### Patterns to notice
+There are some patterns to note:
+
+- The first character in EVERY returned string is `"I"`
+- There is a `\n` following EVERY I EXCEPT the last. Our solution will need a way of knowing when we are adding the last I so we don't add too many `\n` characters.
+- After the first `I`, there is ALWAYS a sequence of one or more spaces before the next `I`. Our solution will need a way of calculating the correct number of spaces before the next `I`. We might note here that there is ONE space after the FIRST `I`, TWO spaces after the SECOND `I`, THREE spaces after the THIRD `I`, and so on.
+  
+It is useful to note these patterns because we can use them when designing the solution later.
+
+### 8. Decomposing the problem
+1. Can you decompose this problem into smaller ones?
+_Hint:_ Think about the characters we are adding to the result string. Decomposing a problem is all about not trying to do everything at once.
+Describe your decomposition in English without reference to programming code of any kind, although you might want to use variable names to refer to certain values.
+2. Discuss as group the different decompositions you have come up with. Resolve any differences.
+
+### 9. Our decomposition
+_Step 1:_ There is a simple version of the problem that we can solve first. Ignore all characters except the `I` and generate and return a string containing the correct number of `I` characters. This will be our version 1.
+
+_Step 2:_ Modify version 1 so that the correct number of `\n` characters are added. This will be our version 2.
+
+_Step 3:_ Modify version 2 so that the correct number of spaces are added. This will be our version 3 (final version).
+
+### 10. A solution to Step 1
+In version 1, we are going to return a string containing only the correct number of `I` characters.
+
+- `n=0` we need to return `""`
+- `n=1` we need to return `"I"`
+- `n=2` we need to return `"II"`
+- `n=3` we need to return `"III"`
+  
+and so on...
+
+Here is a design for version 1.
+
+- We are building a string so start with a variable called `result` which is an empty string `""`. We will append all the subsequent characters to `result`.
+- If the value of `n` is less than `1`, there is nothing to do, so return `result`.
+- Use a variable call `iCount` to count the number of `I` characters we have appended so far, currently its value should be `0`.
+- `while iCount` is less than `n`, repeat:
+  - Append an `I` to `result`
+  - Increment the value of `iCount` by one
+`return result`
+
+Write the plan above in Javascript and check that it works. You might need to check the documentation for how to append to a string. There is more than one way to do that.
+
+### 11. The code for Version 1
+Here is the code for version 1:
+```js
+function drawStairs(n) {
+	let result = "";
+	if (n < 1) return result; // nothing to do, the function returns here
+	// we only get past the above line when n >= 1, we don't need an else
+	let iCount = 0;
+	while (iCount < n) {
+		// append an I
+		result = result.concat("I");
+			// or you could have ...
+			// result = result + "I";
+		// update the count
+		iCount = iCount + 1;
+	}
+	return result;
+}
+``` 
+
+If we run version 1 in codewars we will see the following output:
+![codewars failed test](../assets/codewars-stair-test.png)
+
+Version 1 passes the test for `n=1`. It fails when `n=3` and `n=5` but we expected that. If you read the message printed for the 3-step test, it says
+
+```node
+expected 'III' to equal 'I\n I\n  I'
+``` 
+
+We can see that version 1 is doing exactly what we intended. In the 3-step test, version 1 returns a string containing three `I` characters. In the 5-step test, version 1 returns a string containing five `I` characters.
+
+### 12. Develop a solution to step 2.
+Version 2 will return strings containing only `I` and `\n` characters. Here is what we are aiming at:
+
+- `n=0` we need to return `""`
+- `n=1` we need to return `"I"`
+- `n=2` we need to return `"II"`
+- `n=3` we need to return `"III"`
+  
+and so on...
+
+We note that when we add an `I`, if it was not the last `I`, we add a `\n`. Here is the relevant code with a comment added:
+```js
+while (iCount < n) {
+	// append an I
+	result = result.concat("I");
+	// update the count
+	iCount = iCount + 1;
+	// if that wasn't the last I, append a \n
 }
 ```
+Write the code indicated by our comment to complete version 2.
 
-3. **Position ranking with ordinals**
-```javascript
-function displayRanking(positions) {
-  // Displays ranking with ordinals (1st, 2nd, 3rd place)
-  return positions.map((name, index) => 
-    `${getOrdinal(index + 1)} place: ${name}`
-  ).join('\n');
+### 13. Adding a newline
+To correctly add a newline when required, we need to add:
+```js
+if (iCount < n) {
+	result = result.concat("\n");
 }
 ```
+We should test this and check the output is what we expect.
 
-### Ordinal Numbers Exercises
+### 14. Developing a solution to step 3
+The final version of our code will include space characters. This is what we are aiming at:
 
-1. **Complete the ordinal function**
-```javascript
-function getOrdinal(n) {
-  // TODO: Implement this function to return the ordinal form of a number
-  // Example: 1 -> "1st", 2 -> "2nd", 3 -> "3rd", 4 -> "4th", 11 -> "11th"
+- `n=0` we need to return `""`
+- `n=1` we need to return `"I"`
+- `n=2` we need to return `"II"`
+- `n=3` we need to return `"III"`
+  
+and so on...
+
+We should notice that
+- the spaces come after the `\n` character for every `I` except the last.
+- the number of spaces is the same as the number of `I` characters we have appended so far.
+- Modify version 2 so that it includes the code to append the correct number of spaces. _Hint:_ The algorithm to use is to count spaces and repeatedly add a space until you have enough.
+
+### 15. Adding the right number of spaces
+Here is the code to add the right number of spaces:
+```js
+// add the \n when required
+if (iCount < n) {
+	result = result.concat("\n");
+	// add the spaces too
+	let spaceCount = 0;
+	while (spaceCount < iCount) {
+		result = result.concat(" ");
+		spaceCount = spaceCount + 1;
+	}
 }
 ```
-
-2. **Create a leaderboard display**
-```javascript
-function createLeaderboard(players) {
-  // TODO: Return an array of strings with player names and their ordinal positions
-  // Example input: ["Alice", "Bob", "Charlie"]
-  // Expected output: ["1st: Alice", "2nd: Bob", "3rd: Charlie"]
+You might have written the following:
+```js
+// add the \n when required
+if (iCount < n) {
+	result = result.concat("\n");
+}
+// now add the spaces
+if (iCount < n) {
+	let spaceCount = 0;
+	while (spaceCount < iCount) {
+		result = result.concat(" ");
+		spaceCount = spaceCount + 1;
+	}
 }
 ```
+but we don't need the second `if` statement because both `if` statements test whether `(iCount < n)` and the neither if statement changes `iCount` or `n`. Therefore we can merge the two into one `if` statement.
 
-3. **Format anniversary dates**
-```javascript
-function formatAnniversary(years) {
-  // TODO: Return a string with the ordinal anniversary
-  // Example: 1 -> "1st anniversary", 2 -> "2nd anniversary", 3 -> "3rd anniversary"
-}
-```
+One `if` statement is simpler than two, simpler is almost always better.
 
-[Back to Topics](#topics-to-practice)
 
----
+### Mentored code review (Optional)
+#### Learning Objectives
+- [ ] Our learners get feedback on their work through code review. 
 
-## 2. Testing Frameworks
+At work, colleagues review each others code to understand code, look for problems, and both share and learn better ways of doing things.
 
-### Testing Frameworks Code Inspiration
+At HYF every learner should get code review on their work especially for the PR.
 
-1. **Basic test structure**
-```javascript
-// Simple test example without a framework
-function test(description, testFunction) {
-  try {
-    testFunction();
-    console.log(`✓ ${description}`);
-  } catch (error) {
-    console.error(`✗ ${description}: ${error.message}`);
-  }
-}
-```
+#### 🕹️Live Code Review
+- The coach will review a pull request, and talk out loud about what they’re looking for and doing.
+- The learner(s) will ask questions as they do.
 
-2. **Assertion function**
-```javascript
-function expect(actual) {
-  return {
-    toBe(expected) {
-      if (actual !== expected) {
-        throw new Error(`Expected ${expected} but got ${actual}`);
-      }
-    }
-  };
-}
-```
+<details>
+<summary> Hints and tips </summary>
 
-3. **Test grouping**
-```javascript
-function describe(description, tests) {
-  console.log(description);
-  tests();
-}
-```
+- How did you understand what the goal of the PR is? Reading the title and description, looking at the coursework exercises, etc.
+- The uses of the different tabs in a PR: Conversation, Commits, Files changed.
+- What made a PR easy or hard to review:
+	- Where unrelated files/lines changed?
+	- Was code consistently formatted? Did indentation help or hurt understanding?
+- How did you review the code? Did you read top-to-bottom? Did you jump around into and out-of functions? Did you look at tests? Did you clone the code locally and try running it?
+</details>
 
-### Testing Frameworks Exercises
 
-1. **Complete the test function**
-```javascript
-function test(description, testFunction) {
-  // TODO: Implement a simple test function that catches errors and logs results
-}
-```
+### 💬 Independent Study & Support Time
+#### Students
+This is time for you to get help with whatever you need help with.
 
-2. **Create an assertion library**
-```javascript
-function expect(actual) {
-  // TODO: Return an object with methods like toBe, toEqual, etc.
-  return {
-    toBe(expected) {
-      // TODO: Implement this method
-    }
-  };
-}
-```
+If you didn’t understand something in the prep, ask about it.
 
-3. **Write tests for a math utility**
-```javascript
-// TODO: Write tests for this function using your test framework
-function add(a, b) {
-  return a + b;
-}
-```
+If you were struggling with a coursework exercise, get help with it.
 
-[Back to Topics](#topics-to-practice)
+If you weren’t quite sure of something in a workshop, discuss it.
 
----
+If you don’t have any problems, keep working through the coursework until you need help.
 
-## 3. Starting a Project
+It can be useful to get into groups with others facing the same problem, or working on the same backlog item.
 
-### Starting a Project Code Inspiration
+#### Volunteer Coaches
+Don’t be scared to approach people and ask what they’re working on - see if you can help them out, or stretch their understanding.
 
-1. **Project structure example**
-```
-my-project/
-├── package.json
-├── src/
-│   └── index.js
-├── tests/
-│   └── index.test.js
-└── README.md
-```
+If lots of people have the same problems, maybe you can put together a demonstration or a workshop to help them understand.
 
-2. **Package.json basics**
-```json
-{
-  "name": "my-javascript-project",
-  "version": "1.0.0",
-  "description": "A simple JavaScript project",
-  "main": "src/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
-}
-```
-
-3. **Basic module export**
-```javascript
-// src/utils.js
-function greet(name) {
-  return `Hello, ${name}!`;
-}
-
-module.exports = { greet };
-```
-
-### Starting a Project Exercises
-
-1. **Create a project structure**
-```bash
-# TODO: Create the following directory structure for a new project
-# my-app/
-# ├── package.json
-# ├── src/
-# │   └── index.js
-# └── tests/
-#     └── index.test.js
-```
-
-2. **Initialize a package.json**
-```bash
-# TODO: Run the command to create a package.json file with default values
-```
-
-3. **Create and export a module**
-```javascript
-// TODO: Create a math.js file that exports add, subtract, multiply, and divide functions
-```
-
-[Back to Topics](#topics-to-practice)
-
----
-
-## 4. Using Packages
-
-### Using Packages Code Inspiration
-
-1. **Importing and using a package**
-```javascript
-// Using the lodash package
-const _ = require('lodash');
-
-const numbers = [1, 2, 3, 4, 5];
-const doubled = _.map(numbers, n => n * 2);
-```
-
-2. **Package version management**
-```json
-{
-  "dependencies": {
-    "lodash": "^4.17.21"
-  },
-  "devDependencies": {
-    "jest": "^27.0.0"
-  }
-}
-```
-
-3. **Using multiple packages**
-```javascript
-const moment = require('moment');
-const axios = require('axios');
-
-// Get current date and make an API request
-const today = moment().format('YYYY-MM-DD');
-axios.get(`https://api.example.com/data?date=${today}`);
-```
-
-### Using Packages Exercises
-
-1. **Install and use a package**
-```bash
-# TODO: Install the chalk package and use it in a script to print colored text
-```
-
-2. **Add dependencies to package.json**
-```json
-{
-  // TODO: Add lodash and moment as dependencies
-  "dependencies": {
-  }
-}
-```
-
-3. **Create a script using multiple packages**
-```javascript
-// TODO: Create a script that uses both moment and axios to fetch data for today's date
-```
-
-[Back to Topics](#topics-to-practice)
-
----
-
-## 5. Installing Jest
-
-### Installing Jest Code Inspiration
-
-1. **Install Jest as a dev dependency**
-```bash
-npm install --save-dev jest
-```
-
-2. **Add test script to package.json**
-```json
-{
-  "scripts": {
-    "test": "jest"
-  }
-}
-```
-
-3. **Run tests with Jest**
-```bash
-npm test
-```
-
-### Installing Jest Exercises
-
-1. **Install Jest in your project**
-```bash
-# TODO: Install Jest as a development dependency
-```
-
-2. **Configure test script**
-```json
-{
-  "scripts": {
-    // TODO: Add a test script that runs Jest
-  }
-}
-```
-
-3. **Run your first test**
-```bash
-# TODO: Execute the test command to verify Jest is working
-```
-
-[Back to Topics](#topics-to-practice)
-
----
-
-## 6. Jest's API
-
-### Jest's API Code Inspiration
-
-1. **Basic test with expect**
-```javascript
-test('adds 1 + 2 to equal 3', () => {
-  expect(1 + 2).toBe(3);
-});
-```
-
-2. **Testing arrays and objects**
-```javascript
-test('array containing', () => {
-  expect(['apple', 'banana']).toContain('apple');
-});
-
-test('object matching', () => {
-  expect({a: 1, b: 2}).toEqual({a: 1, b: 2});
-});
-```
-
-3. **Testing async code**
-```javascript
-test('async test', async () => {
-  const result = await fetchData();
-  expect(result).toBeDefined();
-});
-```
-
-### Jest's API Exercises
-
-1. **Write a basic test**
-```javascript
-// TODO: Write a test that checks if 5 + 5 equals 10 using Jest's expect and toBe
-```
-
-2. **Test array operations**
-```javascript
-// TODO: Write a test that verifies an array contains a specific value
-```
-
-3. **Test object equality**
-```javascript
-// TODO: Write a test that checks if two objects have the same properties and values
-```
-
-[Back to Topics](#topics-to-practice)
-
----
-
-## 7. First Test Case
-
-### First Test Case Code Inspiration
-
-1. **Testing a simple function**
-```javascript
-// function.js
-function multiply(a, b) {
-  return a * b;
-}
-
-// function.test.js
-const { multiply } = require('./function');
-
-test('multiplies 2 * 3 to equal 6', () => {
-  expect(multiply(2, 3)).toBe(6);
-});
-```
-
-2. **Testing edge cases**
-```javascript
-test('multiplies by zero', () => {
-  expect(multiply(5, 0)).toBe(0);
-  expect(multiply(0, 5)).toBe(0);
-});
-```
-
-3. **Testing with different values**
-```javascript
-test('multiplies negative numbers', () => {
-  expect(multiply(-2, 3)).toBe(-6);
-  expect(multiply(2, -3)).toBe(-6);
-  expect(multiply(-2, -3)).toBe(6);
-});
-```
-
-### First Test Case Exercises
-
-1. **Create and test a function**
-```javascript
-// TODO: Create a divide function and write tests for it
-function divide(a, b) {
-  // TODO: Implement this function
-}
-```
-
-2. **Test error cases**
-```javascript
-// TODO: Write tests that verify divide throws an error when dividing by zero
-```
-
-3. **Test multiple scenarios**
-```javascript
-// TODO: Write tests for the divide function with various inputs including decimals
-```
-
-[Back to Topics](#topics-to-practice)
-
----
-
-## 8. Anonymous Functions
-
-### Anonymous Functions Code Inspiration
-
-1. **Function as a parameter**
-```javascript
-// Using anonymous function with setTimeout
-setTimeout(function() {
-  console.log('This runs after 1 second');
-}, 1000);
-```
-
-2. **Array methods with anonymous functions**
-```javascript
-const numbers = [1, 2, 3, 4, 5];
-const doubled = numbers.map(function(n) {
-  return n * 2;
-});
-```
-
-3. **Immediately Invoked Function Expression (IIFE)**
-```javascript
-(function() {
-  console.log('This runs immediately');
-})();
-```
-
-### Anonymous Functions Exercises
-
-1. **Use anonymous function with array method**
-```javascript
-const numbers = [1, 2, 3, 4, 5];
-// TODO: Use an anonymous function with filter to get even numbers
-```
-
-2. **Create an IIFE**
-```javascript
-// TODO: Create an IIFE that calculates and logs the square of 5
-```
-
-3. **Pass anonymous function to setTimeout**
-```javascript
-// TODO: Use setTimeout with an anonymous function to log a message after 2 seconds
-```
-
-[Back to Topics](#topics-to-practice)
-
----
-
-## 9. Arrow Functions
-
-### Arrow Functions Code Inspiration
-
-1. **Basic arrow function**
-```javascript
-const add = (a, b) => {
-  return a + b;
-};
-
-// Implicit return
-const multiply = (a, b) => a * b;
-```
-
-2. **Arrow functions with array methods**
-```javascript
-const numbers = [1, 2, 3, 4, 5];
-const squared = numbers.map(n => n * n);
-```
-
-3. **Arrow functions and 'this'**
-```javascript
-function Timer() {
-  this.seconds = 0;
-  setInterval(() => {
-    this.seconds++;
-    console.log(this.seconds);
-  }, 1000);
-}
-```
-
-### Arrow Functions Exercises
-
-1. **Convert function to arrow function**
-```javascript
-// TODO: Convert this function to an arrow function
-function greet(name) {
-  return "Hello, " + name + "!";
-}
-```
-
-2. **Use arrow function with array method**
-```javascript
-const numbers = [1, 2, 3, 4, 5];
-// TODO: Use an arrow function with reduce to sum all numbers
-```
-
-3. **Create arrow functions with implicit return**
-```javascript
-// TODO: Create arrow functions with implicit return for:
-// 1. Doubling a number
-// 2. Checking if a number is even
-```
-
-[Back to Topics](#topics-to-practice)
-
----
-
-## 10. Solving Problems While Testing
-
-### Solving Problems While Testing Code Inspiration
-
-1. **Test-driven development example**
-```javascript
-// First write the test
-test('capitalize function capitalizes first letter', () => {
-  expect(capitalize('hello')).toBe('Hello');
-});
-
-// Then implement the function
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-```
-
-2. **Debugging with tests**
-```javascript
-// When a test fails, use the error message to fix the implementation
-test('add function handles string numbers', () => {
-  // This test might fail initially, helping us improve our function
-  expect(add('2', '3')).toBe(5);
-});
-```
-
-3. **Refactoring with confidence**
-```javascript
-// After implementing tests, we can refactor knowing our tests will catch errors
-function oldComplexFunction() { /* complex code */ }
-
-// Refactor to:
-function newCleanFunction() { /* clean code */ }
-
-// Tests ensure both functions behave the same way
-```
-
-### Solving Problems While Testing Exercises
-
-1. **Practice TDD with a new function**
-```javascript
-// TODO: First write a test for a reverseString function, then implement it
-```
-
-2. **Fix a bug using tests**
-```javascript
-// This function has a bug - use tests to identify and fix it
-function subtract(a, b) {
-  return a + b; // Oops, this should be a - b
-}
-
-// TODO: Write tests that reveal the bug, then fix the function
-```
-
-3. **Refactor with test coverage**
-```javascript
-// TODO: Write tests for this function, then refactor it to be more readable
-function processData(data) {
-  let result = 0;
-  for (let i = 0; i < data.length; i++) {
-    if (data[i] > 5) {
-      result += data[i] * 2;
-    }
-  }
-  return result;
-}
-```
-
-[Back to Topics](#topics-to-practice)
-
----
-
-## Additional Resources
-
-1. [MDN JavaScript Guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide) - Comprehensive JavaScript documentation
-2. [Jest Documentation](https://jestjs.io/docs/getting-started) - Official Jest testing framework guide
-3. [JavaScript Testing Best Practices](https://github.com/goldbergyoni/javascript-testing-best-practices) - Extensive testing guidelines and examples
-
-[Back to Topics](#topics-to-practice)
+If absolutely no one needs help, consider reviewing some PRs. 
