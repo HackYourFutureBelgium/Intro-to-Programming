@@ -1,4 +1,4 @@
-# 📏 Ordered data
+# 1. Ordered data
 
 ## Learning Objectives
 
@@ -10,7 +10,7 @@ Let's imagine we're writing a program that involves information about a user's p
 const profileData = ["Francesco", "Leoni", 33, "Manchester"];
 ```
 
-At the moment, we could visualise **profileData** in a table like this:
+At the moment, we could visualise `profileData` in a table like this:
 
 | index | value       |
 |-------|-------------|
@@ -19,7 +19,7 @@ At the moment, we could visualise **profileData** in a table like this:
 | 2     | 33          |
 | 3     | "Manchester" |
 
-Inside **profileData** we access items using an **index**. However, with an ordered list of items we can’t tell what each item in the list represents. We only know the position of data in the array. We could access the item at index 3 to get **"Manchester"**: however, we don’t know what **"Manchester"** tells us about the user. **"Manchester"** could be the city they currently live in, it could be their city of birth, a place where they studied in the past etc. We need to know the values but also what these values represent about the user.<br>
+Inside `profileData`** we access items using an `index`. However, with an ordered list of items we can’t tell what each item in the list represents. We only know the position of data in the array. We could access the item at index 3 to get `"Manchester"`: however, we don’t know what `"Manchester"` tells us about the user. `"Manchester"` could be the city they currently live in, it could be their city of birth, a place where they studied in the past etc. We need to know the values but also what these values represent about the user.
 
 We might think we can just remember (and maybe write in a comment) “index 0 is the person’s first name”, but this has problems. What if we need to introduce a new piece of data? We may need to change every piece of code that uses the array. What if some of the data is optional (e.g. a middle name)? It’s also really hard for someone new to come read our code.<br>
 
@@ -34,9 +34,9 @@ However, instead of ordering data with indexes, we can label data with keys.<br>
 | age     | 33          |
 | cityOfResidence     | "Manchester" |
 
-We can look up values in this table by the key. With data stored like this, we can see what values like "Manchester" actually mean - in this case, it refers to a city of residence for the user.<br>
+We can look up values in this table by the key. With data stored like this, we can see what values like `"Manchester"` actually mean - in this case, it refers to a city of residence for the user.
 
-In JavaScript, we can use an object (An object is a collection of properties. Each property is a key-value pair) to store data in a table-like way, where we can look up data using a key.<br>
+In JavaScript, we can use an object to store data in a table-like way, where we can look up data using a key. _An object_ is a collection of properties. Each property is a key-value pair. 
 
 We can declare an object like this.
 
@@ -48,13 +48,13 @@ const profileData = {
   cityOfResidence: "Manchester",
 };
 ```
-# Key-value pairs
+# 2. Key-value pairs
 
 ## Learning Objectives
 - [ ] Define an object property  
 - [ ] Identify key-value pairs in an object literal  
 
-The profileData object is made up of **properties**. Each **property** is an association between a key and a value.
+The `profileData` object is made up of **properties**. Each **property** is an association between a key and a value.
 
 ---
 
@@ -67,7 +67,7 @@ The profileData object is made up of **properties**. Each **property** is an ass
 };
 ```
 
-In the object literal above, there are 4 properties. The first property consists of firstName and "Francesco". firstName is the key, "Francesco" is the value associated with the key firstName.<br>
+In the object literal above, there are 4 properties. The first property consists of `firstName` and `"Francesco"`. `firstName` is the `key`, `"Francesco"` is the `value` associated with the key `firstName`.
 
 In object literals, each key-value pair is separated by a comma.<br>
 
@@ -82,7 +82,7 @@ p {
 }
 ```
 
-# Accessing properties
+# 3. Accessing properties
 
 ## Learning Objectives
 - [ ] Access object property values with dot notation  
@@ -90,7 +90,7 @@ p {
 
 We've already accessed object property values. `console` is an object:
 
-```javascript
+```node
 Welcome to Node.js v16.19.1.
 Type ".help" for more information.
 
@@ -106,7 +106,7 @@ timeEnd: [Function: timeEnd],
 }
 ```
 
-We use dot notation to access the property value associated with a key. When we write **console.log** - think of this as saying:
+We use dot notation to access the property value associated with a key. When we write `console.log` - think of this as saying:
 
 “access the value associated with key of **"log"**, inside the **console** object”.
 
@@ -138,7 +138,7 @@ Using dot notation or square brackets both work the same way.
 
 ### Mutation
 
-Objects are mutable data structures. We can use the assignment operator = to update the value associated with a particular key.<br>
+Objects are mutable data structures. We can use the assignment operator `=` to update the value associated with a particular key. 
 
 ```javascript
 const profileData = {
@@ -150,7 +150,9 @@ profileData.firstName = "Fraz";
 console.log(profileData.firstName); // firstName is now "Fraz"
 ```
 
-## Predict and explain 🟧 🟧
+### Predict and explain 
+Predict and explain what the console output be when we run the code below runs.
+
 
 ```javascript
 const profileData = {
@@ -165,11 +167,11 @@ console.log(profileData == twinData);
 console.log(profileData.firstName);
 ```
 
-# Properties are optional
+### Properties are optional
 
 It's possible to add properties to an object that already exists. Objects don't always have the same properties.
 
-## Exercise
+### Exercise
 
 ```javascript
 const profileData = {
@@ -185,14 +187,14 @@ profileData.cityOfResidence = "Manchester";
 console.log(profileData.cityOfResidence);
 ```
 
-Predict and explain what the console output will be when the code above runs.<br>
+Predict and explain what the console output will be when the code above runs.
 
 ### Object literals vs objects
-What's the difference between an object, and an object literal?<br>
+What's the difference between an _object_, and an _object literal_?
 
-An object is the thing we're making, which maps keys to values.<br>
+_An object_ is the thing we're making, which maps keys to values.
 
-An object literal is how we can write one out specifying all of its key-value pairs in one statement.<br>
+_An object literal_ is how we can write one out specifying all of its key-value pairs in one statement.
 
 These two blocks of code construct equivalent objects:
 
@@ -207,13 +209,13 @@ object2.firstName = "Francesco";
 object2.lastName = "Leoni";
 ```
 
-**object1** is all constructed in one object literal. **object2** starts off with an empty object literal, and then adds some properties to it.<br>
+`object1` is all constructed in one object literal. `object2` starts off with an empty object literal, and then adds some properties to it.
 
-Note: This same terminology is used for other types:<br>
+Note: This same terminology is used for other types:
 
-**"abc"** is a string literal, **"a" + "b" + "c"** makes the same string, but by concatenating three string literals together.<br>
+`"abc"` is a string literal, `"a" + "b" + "c"` makes the same string, but by concatenating three string literals together.<br>
 
-# ❓🪢 Query strings
+# 5. Query strings ❓🪢
 
 ## Learning Objectives
 - [ ] Identify the query string section of a URL  
@@ -222,23 +224,21 @@ Note: This same terminology is used for other types:<br>
 
 Let's define a problem.<br>
 
-Websites have addresses called URLs like this: "https://example.com/widgets". URLs often have **query strings** too. Here is an example of a URL with a query string on the end:<br>
+Websites have addresses called [URLs](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL) like this: "https://example.com/widgets". URLs often have **query strings** too. Here is an example of a URL with a query string on the end:
 
-[https://example.com/widgets?colour=blue&sort=newest](https://example.com/widgets?colour=blue&sort=newest)<br>
+[https://example.com/widgets?colour=blue&sort=newest](https://example.com/widgets?colour=blue&sort=newest)
 
-For this URL, the **query string** is "**colour=blue&sort=newest**". Query strings consist of **query parameters**, separated by an **ampersand character** **&**. **colour=blue** is a query parameter: we say that **colour** is the key and **blue** is the value.<br>
+For this URL, the **query string** is `"colour=blue&sort=newest"`. Query strings consist of **query parameters**, separated by an **ampersand character** `&`. `colour=blue` is a query parameter: we say that `colour` is the key and `blue` is the value.
 
-URLs must always be strings. However, a string isn't a useful data type for accessing query parameters. Given a key like **colour**, accessing the value from a query string stored as a string is not straightforward. However, objects are ideal for looking up values with keys.<br>
+URLs must always be strings. However, a string isn't a useful data type for accessing query parameters. Given a key like `colour`, accessing the value from a query string stored as a string is not straightforward. However, objects are ideal for looking up values with keys.
 
 We're going to implement a function `parseQueryString` to extract the query parameters from a query string and store them in an object:<br>
 
 *Given* a query string and a function `parseQueryString`,  
 *When* we call `parseQueryString` with a query string,  
-*Then* it should return an object with the key-value pairs.<br>
+*Then* it should return an object with the key-value pairs.
 
-E.g.<br>
-
----
+Example : 
 
 ```javascript
 parseQueryString("colour=blue&sort=newest");
@@ -247,23 +247,29 @@ parseQueryString("colour=blue&sort=newest");
 ```
 ---
 
-# Step-through-prepworkshop
+# 5. Step-through-prepworkshop
 
 [![S-T-PREPWS](https://i.ytimg.com/vi/GeKL1Mer4x8/maxresdefault.jpg)](https://youtu.be/GeKL1Mer4x8)
 
-# No parameters
+# 6. No parameters
 
 Let's look at the case where the query string is an empty string.
 
 In this case, we need to think of an output that makes sense.
 
-We saw before that we can try to look up a property on an object which the object doesn't actually have – this will evaluate to undefined.
+We saw before that we can try to look up a property on an object which the object doesn't actually have – this will evaluate to `undefined`.
 
-When we parse the empty query string, we want to return something where any time we ask it for the value of a key, we get back undefined.
+When we parse the empty query string, we want to return something where any time we ask it for the value of a key, we get back `undefined`.
 
 An empty object behaves this way, so it makes sense to return an empty object.
 
-Let's create a test to explore this idea. In your prep dir, run `touch parse-query-string.js && touch parse-query-string.test.js`. Write the following test in the `parse-query-string.test.js` file.
+Let's create a test to explore this idea. In your `prep` directory, run 
+```node 
+touch parse-query-string.js 
+touch parse-query-string.test.js
+```
+
+Write the following test in the `parse-query-string.test.js` file.
 
 ```javascript
 test("given a query string with no query parameters, returns an empty object", () => {
@@ -275,7 +281,7 @@ test("given a query string with no query parameters, returns an empty object", (
 });
 ```
 
-We can pass this test just by returning an empty object for now. We can define a function parseQueryString as follows:<br>
+We can pass this test just by returning an empty object for now. We can define a function `parseQueryString` as follows:
 
 ```javascript
 function parseQueryString() {  
@@ -283,9 +289,9 @@ function parseQueryString() {
 }
 ```
 
-We run our tests and see them pass. Great news.<br>
+We run our tests and see them pass. Great news.
 
-# Parsing a single key-value pair
+# 7. Parsing a single key-value pair
 
 ## Learning Objectives
 - [ ] Suggest a way of splitting a string into an array
@@ -305,16 +311,18 @@ test("given a query string with one pair of query params, returns them in object
 });
 ```
 
-## Strategy
-We first need to separate out the "fruit=banana" string so we can access "fruit" and "banana" separately. We can do this by splitting up the string by the = character. We can split the string into an array consisting of ['fruit', 'banana']. Then we can grab the array's contents and assign the elements meaningful names:
+### Strategy
+We first need to separate out the `"fruit=banana"` string so we can access `"fruit"` and `"banana"` separately. We can do this by splitting up the string by the `=` character. We can split the string into an array consisting of `['fruit', 'banana']`. Then we can grab the array's contents and assign the elements meaningful names:
 
 ```javascript
 function parseQueryString(queryString) {
     const queryParams = {}
+
     const keyValuePair = queryString.split("=");
     const key = keyValuePair[0]; // key will hold 'fruit'
     const value = keyValuePair[1]; // value will hold 'banana'
     queryParams.key = value;
+
     return queryParams;
 }
 ```
@@ -326,13 +334,17 @@ This code does the same thing as the previous code:<br>
 ```javascript
 function parseQueryString(queryString) {
     const queryParams = {}
+
     const [key, value] = queryString.split("="); // key will hold 'fruit', value will hold 'banana'
     queryParams.key = value;
+
     return queryParams;
 }
 ```
+### Check it
+Check the implementation of `parseQueryString` above in [Pythontutor](https://pythontutor.com/render.html#mode=display) to see why it isn’t working properly.
 
-# Access with variables
+# 8. Access with variables
 
 ## Learning Objectives
 - [ ] Explain when square bracket notation may be necessary to access an object
@@ -343,8 +355,10 @@ We can mutate an object using dot notation. However, if we look at the return va
 ```javascript
 function parseQueryString(queryString) {
     const queryParams = {}
+
     const [key, value] = queryString.split("="); // will hold ['fruit', 'banana']
     queryParams.key = value; // mutate the queryParams object
+
     return queryParams;
 }
 ```
@@ -366,7 +380,7 @@ function parseQueryString(queryString) {
 
 We can’t use dot syntax if we don’t know what the name of the key is going to be. Square bracket notation is more powerful than dot notation, because it lets us use any expression as a key.<br>
 
-## Tests
+### Tests
 
 We’ve currently got the following test suite:
 
@@ -388,20 +402,11 @@ describe("parseQueryString()", () => {
   });
 });
 ```
-
-**We’ve currently got the following test suite:**
-
-![tests](/1-Onboarding/assests/tests.png)
-
-## Explain
-
-We’ve got a situation where the first test case (for an empty string) is no longer working. Explain why this test case is no longer passing for the first test case. **Playing computer** or **Trying on your own** will help you to explain why!<br>
-
-Sometimes when we’re solving a problem, it can be useful to work out different cases (like empty query strings, or non-empty query strings) and work out how to solve them separately, then come back when we think we understand the cases and work out how to put the solutions together into one function. This often is useful when there are really different cases to consider.<br>
+Sometimes when we’re solving a problem, it can be useful to work out different cases (like empty query strings, or non-empty query strings) and work out how to solve them separately, then come back when we think we understand the cases and work out how to put the solutions together into one function. This often is useful when there are really different cases to consider.
 
 Most of the time, though, it’s useful to try to keep all of our existing tests passing as we cover more cases. If we wanted to do that here, we could make our function be something like:
 
-```javascript
+```js
 function parseQueryString(queryString) {
   const queryParams = {};
   if (queryString.length === 0) {
@@ -414,10 +419,13 @@ function parseQueryString(queryString) {
   return queryParams;
 }
 ```
+Here, we only add a key to the object if there was actually something to add - we return early if there’s no extra work to do.
 
-Here, we only add a key to the object if there was actually something to add - we return early if there’s no extra work to do.<br>
+### Explain
 
-# Parsing multiple parameters
+We’ve got a situation where the first test case (for an empty string) is no longer working. Explain why this test case is no longer passing for the first test case. Pythontutor will help you to explain why!
+
+# 9. Parsing multiple parameters
 
 ## Learning Objectives
 - [ ] Describe how to extend a strategy for one item to multiple items
@@ -426,8 +434,8 @@ Let's consider the case when there are multiple query parameters in the query st
 
 ---
 
-### Recall
-In the case when the query string has multiple query parameters, then each key-value pair is separated by an **ampersand** character `&`.
+### 💡 Recall
+In the case when the query string has multiple query parameters, then each key-value pair is separated by an ampersand character `&`.
 
 Write this test in the `parse-query-string.test.js` file.
 
@@ -449,13 +457,13 @@ Key insight: If we can do it for one pair, we can try doing it for a list of pai
 
 So we’re missing a step - breaking up the string of multiple key-value pairs into an array where each element is a single key-value pair. If we do this, then we can iterate over the array, and do what we already know how to do on each key-value pair.<br>
 
-Our strategy will be to break the query string apart into an array of key-value pairs. Once we’ve got an array we can try iterating through it and storing each key value pair inside the `queryParams` object.<br>
+Our strategy will be to break the query string apart into an array of key-value pairs. Once we’ve got an array we can try iterating through it and storing each key value pair inside the `queryParams` object.
 
-Let’s start with the first sub-goal.<br>
+Let’s start with the first sub-goal.
 
-## 🎯 Sub-goal 1: split the query string into an array of key-value pairs
+### 🎯 Sub-goal 1: split the query string into an array of key-value pairs
 
-Query strings with multiple key-value pairs use `&` as a separator e.g. à. We want to split `sort=lowest&colour=yellow` into `["sort=lowest", "colour=yellow"]`. We can achieve this by calling `split` with the `"&"` separator.<br>
+Query strings with multiple key-value pairs use `&` as a separator e.g. à. We want to split `sort=lowest&colour=yellow` into `["sort=lowest", "colour=yellow"]`. We can achieve this by calling `split` with the `"&"` separator.
 
 ```javascript
 function parseQueryString(queryString) {
@@ -465,9 +473,9 @@ function parseQueryString(queryString) {
 }
 ```
 
-## 🎯 Sub-goal 2: add each key-value pair in the array to the query params object
+### 🎯 Sub-goal 2: add each key-value pair in the array to the query params object
 
-Once we’ve got an array we can iterate through the key-value pairs and update the queryParams object each time (like we did when we just had one key-value pair).<br>
+Once we’ve got an array we can iterate through the key-value pairs and update the `queryParams` object each time (like we did when we just had one key-value pair).
 
 ```javascript
 function parseQueryString(queryString) {
@@ -483,6 +491,11 @@ function parseQueryString(queryString) {
   return queryParams;
 }
 ```
+
+### Check it
+Check the implementation of `parseQueryString` above in [Pythontutor](https://pythontutor.com/render.html#mode=display) and pay attention to how the `queryParams` object is updated.
+
+___
 
 Now that we’ve worked out how to solve this problem in the case of multiple query parameters, let’s integrate that solution into our previous implementation, to make sure it works for all cases.<br>
 
@@ -511,14 +524,14 @@ When we’re solving problems involving several values, often we need slightly d
 
 When you’re breaking down problems, think to yourself: What are special cases we may need to handle differently?<br>
 
-# 📼 Objects Workshop
+# 10. Objects Workshop  📼
 
 ## Learning Objectives
 - [ ] Practice solving problems with objects
 
 [![objectsWorkshop](https://i.ytimg.com/vi/CHu7iEmuZV4/maxresdefault.jpg)](https://youtu.be/CHu7iEmuZV4)
 
-To get the most out of this workshop - don’t just watch, code along 💻 You can use the code samples below as a starting point.<br>
+To get the most out of this workshop - don’t just watch, code along. You can use the code samples below as a starting point.<br>
 
 ## Exercise 1
 
@@ -637,53 +650,3 @@ const iceCreamsICanEat = whichIceCreamsCanIEat(allIceCreams);
 console.log(iceCreamsICanEat); // what should this output?
 ```
 
-# Prep Conflict Resolution
-
-## Problem Description Session
-
-### Learning Objectives
-
-- [ ] Understand the different theories and actions about conflict resolution
-
-
-**Introduction**<br>
-People at work will inevitably disagree with each other at some time. Most people want to do what’s best for them and those around them. Often, conflicts arise from misunderstandings or different attitudes to general problem-solving.<br>
-
-These exercises will ensure you understand the theory and have reflected on this theme, so you can do the in-class exercises more effectively.<br>
-
-- 1 How to deal with it
-
-**How to deal with workplace conflicts**<br>
-🎯 Goal: Understand tips that will help you to handle conflicts on day-to-day basis. (10 minutes)<br>
-
-Watch the video [![“How to deal with workplace conflicts - Develop your personality and business skills”.](https://i.ytimg.com/vi/CHu7iEmuZV4/maxresdefault.jpg)](https://www.youtube.com/watch?v=qDfSYz0PX9g)
-
-- 2 Conflict Resolution
-
-**Conflict Resolution Curve**<br>
-🎯 Goal: Understand what is meant by Conflict Resolution (30 minutes)<br>
-
-Read about the [Conflict Resolution](https://en.wikipedia.org/wiki/Conflict_resolution) Curve on Wikipedia<br>
-
-- 3 Protective Factors
-
-**Protective Factors**<br>
-🎯 Goal: Understand and reflect on your protective factors (20 minutes)<br>
-
-Read this text: [“Protective Factors”](https://www.therapistaid.com/worksheets/protective-factors)
-Answer the reflective questions.
-
-- 4 Reflect on your own
-
-**Reflect on your own conflict experience**
-🎯 Goal: Reflect on your conflict experience (30 minutes)<br>
-
-Think of a time you have had a conflict with a work colleague.<br>
-
-Answer these questions in a Google Doc:<br>
-
-1. Was there a misunderstanding of the facts?
-2. Have you learned different lessons from your experience which affected your views?
-3. Did either of you have a hidden agenda directly opposed to the other person?
-4. How did either of you try to resolve the conflict?
-5. What was the outcome?
