@@ -1,19 +1,4 @@
-# Gathering requirements
-
-## Learning Objectives
-
-- [ ] Define product, MVP, feature, user story
-
-Read the following materials and get familiar with “product”, “MVP”, “feature” and “user story” concepts.<br>
-
-- [Difference between Product and Software](https://medium.com/@escalesolutions/difference-between-product-and-software-abce6a7490)
-- [Minimum Viable Product (MVP)](https://www.productplan.com/glossary/minimum-viable-product/)
-- [Features](https://www.productplan.com/glossary/features/)
-- [User Story](https://www.productplan.com/glossary/user-story/)
-
-Create a simple [mind map](https://www.mindmapping.com/mind-map) with your ideas. This content will be discussed in class.<br>
-
-# Reacting to user input
+# 1. Reacting to user input
 
 ## Learning Objectives
 
@@ -31,11 +16,11 @@ When a user types text into a search box, we want to capture their input and use
 
 We’ll explore these ideas today. Code along with the examples in this lesson.<br>
 
-# Step-through-prep-workshop
+# 2. Step-through-prep-workshop
 
 [![Video](https://i.ytimg.com/vi/7kYwo6W89j4/maxresdefault.jpg)](https://youtu.be/7kYwo6W89j4)
 
-# Break down the problem
+# 3. Break down the problem
 
 ## Learning Objectives
 
@@ -45,9 +30,9 @@ We already have a website for displaying film listings.<br>
 
 Let’s think through building this film search interface step-by-step. Write down your sequence of steps to build this interface.<br>
 
-**Given a view of film cards and search box
-When a user types in the search box
-Then the view should update to show only matching films.**
+_Given_ a view of film cards and search box<br>
+_When_ a user types in the search box<br>
+_Then_ the view should update to show only matching films.
 
 ---
 
@@ -57,30 +42,30 @@ Then the view should update to show only matching films.**
 
 ### Write your plan
 
-- 1 🔍 Display search box and initial list of films
-- 2 🦻🏽 Listen for user typing in search box
-- 3 🎞️ Capture latest string when user types
-- 4 🎬 Filter films list based on search text
-- 5 📺 Update UI with filtered list
+1. Display search box and initial list of films
+2. Listen for user typing in search box
+3. Capture latest string when user types
+4. Filter films list based on search text
+5. Update UI with filtered list
 
-The key aspects we need to handle are capturing input and updating UI.<br>
+The key aspects we need to handle are capturing input and updating UI.
 
-### 👂🏿 Capturing Input
-We need to listen for the input event on the search box to react as the user types. When the event fires, we can read the updated string value from the search box input element.<br>
+### Capturing Input
+We need to listen for the `input` event on the search box to react as the user types. When the event fires, we can read the updated string value from the search box input element.
 
-### 🎬 Filtering Data
-Once we have the latest search text, we can filter the list of films. We can use JavaScript array methods like .filter() to return films that match our search string.<br>
+### Filtering Data
+Once we have the latest search text, we can filter the list of films. We can use JavaScript array methods like `.filter()` to return films that match our search string.
 
-### 🆕 Updating UI
-With the latest filtered list of films in hand, we re-render these films to display the updated search results. We can clear the current film list and map over the filtered films to add updated DOM elements.<br>
+### Updating UI
+With the latest filtered list of films in hand, we re-render these films to display the updated search results. We can clear the current film list and map over the filtered films to add updated DOM elements.
 
-Thinking through these aspects separately helps frame the overall task. Next we can focus on each piece:<br>
+Thinking through these aspects separately helps frame the overall task. Next we can focus on each piece:
 
-- 1 👂🏿 Listening for input
-- 2 🎬 Filtering data
-- 3 🆕 Re-rendering UI with the films example.
+1. Listening for input
+2. Filtering data
+3. Re-rendering UI with the films example.
 
-<img width="751" height="100" alt="image" src="https://github.com/user-attachments/assets/dfec73c1-f9a0-4713-aec3-f07e23f23439" />
+__💡Tip:__ We clear the current film list and then add elements based on our new list.
 
 ### 💭 Why clear out the list and make new elements?
 
@@ -98,7 +83,7 @@ By making new cards, we avoid thinking about how cards change.<br>
 
 We can focus.<br>
 
-# Identirying state
+# 4. Identifying state
 
 ## Learning Objectives
 
@@ -127,11 +112,12 @@ If a website allows log-in, we would not have one state for “is a user logged 
 ### State in our example
 In our film example, we need two pieces of state:<br>
 
-- 1 Our list of all films
-- 2 The search term<br>
+1. Our list of all films
+2. The search term
+   
 When we introduce filtering films based on the search term **we will not introduce other new state.** We will not store a filtered list of films in state. Our filtered list of films can be derived from our existing state.<br>
 
-# Refactoring to state+render
+# 5. Refactoring to state+render
 
 ## Learning Objectives
 
@@ -143,7 +129,7 @@ We are going to introduce a common pattern in writing UIs, which is to define an
 
 Up until now, our film website has been **static**: it never changes. By introducing a search input, our website is becoming dynamic: it can change. This means that we may need to re-run the code which creates our UI elements.
 
-So before we add the new functionality to our website, we are going to **refactor**🧶(`Refactoring is when we change how our code is structured, without changing what it does. Even though we have changed our code, it does exactly the same thing it did before.`). Find your code that creates the film cards and adds them to the page. Move your code into a function called `render`:
+So before we add the new functionality to our website, we are going to **refactor** (`Refactoring is when we change how our code is structured, without changing what it does. Even though we have changed our code, it does exactly the same thing it did before.`). Find your code that creates the film cards and adds them to the page. Move your code into a function called `render`:
 
 ```javascript
 const films = [
@@ -212,13 +198,13 @@ const state = {
 
 Each time we need to store more information we should think: Is this a piece of state, or is this something we’re deriving from existing state? Whenever something in our state changes, we will tell our UI just to show “whatever is in the state” by calling the `render` function. In this way, we simplify our UI code by making it a function of the state.
 
-<img width="757" height="147" alt="image" src="https://github.com/user-attachments/assets/ec2648a8-d7c9-49af-8110-01333dd5ae0d" />
+_💡Tip:_ We don’t need to store our state in a variable called `state`. It was already `state` when it was called `films`. But naming this variable `state` can help us to think about it more clearly.
 
 Make sure to update any references to the `films` variable you may have had before to instead reference `state.films`.<br>
 
 This is another refactoring: we didn’t change what our application does, we just moved a variable.<br>
 
-# Introducing new state
+# 6. Introducing new state
 
 We are introducing a new feature: being able to search for films. We have identified that this introduces one new element of state: the search term someone has asked for.<br>
 
@@ -252,9 +238,9 @@ We could pick any initial value. This actually allows us to finish implementing 
 
 This is because we have split up our problem into three parts:<br>
 
-- 1 👩🏾‍🔬 Identify what state we have.
-- 2 ✍🏿 Define how to render the page based on that state.
-- 3 🎱 Change state (perhaps in response to some user action).<br>
+1. Identify what state we have.
+2. Define how to render the page based on that state.
+3. Change state (perhaps in response to some user action).<br>
 
 Let’s try making our render function work for the search term “Pirate”. Change the initial value of the `searchTerm` field of the `state` object to “Pirate”:
 
@@ -281,7 +267,7 @@ const state = {
 ```
 We expect, if someone is searching for “Pirate”, to only show films whose title contains the word Pirate.<br>
 
-# Rendering based on state
+# 7. Rendering based on state
 
 ## Learning Objectives
 
@@ -314,9 +300,8 @@ function render() {
 ```
 
 ### Predict the state
-
-- 1 At this point in our codealong, when we open our page, what will we see?
-- 2 If we change the initial value of `state.searchTerm` back to the empty string and open the page again, what will we see?
+1. At this point in our codealong, when we open our page, what will we see?
+2. 2 If we change the initial value of `state.searchTerm` back to the empty string and open the page again, what will we see?
 
 ### Check understanding
 
@@ -326,13 +311,13 @@ If we change the initial value of `state.searchTerm` back to the empty string an
 
 We have now solved two of our three problems:
 
-:white_check_mark: Identify what state we have.<br>
-:white_check_mark: Define how to render the page based on that state.<br>
-:white_check_mark: Change state (perhaps in response to some user action).<br>
+- [x] Identify what state we have.<br>
+- [x] Define how to render the page based on that state.<br>
+- [ ] Change state (perhaps in response to some user action).<br>
 
 ## Making our search more user friendly
 
-<img width="748" height="117" alt="image" src="https://github.com/user-attachments/assets/e658c906-1a66-4a1b-a532-5e37c94a2686" />
+_💡Things to consider:_ Users don’t always type perfectly. How will you match their typing to the film titles? What if they type in all caps? What is the simplest thing that could possibly work?
 
 One of the nice things about breaking down the problem like this is that it allows us to change rendering without needing to interact with the page.<br>
 
@@ -340,18 +325,18 @@ If we want to improve our search functionality (e.g. to make it work if you sear
 
 This can be a lot quicker than having to refresh the page and type in “PIRATES” in the search box every time we make a change want to see if our search works.<br>
 
-### ✍️Exercise: Make search more user friendly
+### 🏋🏻‍♀️ Exercise: Make search more user friendly
 Try to make your render function work even if someone searched for “pirates” or “PIRATES”.
 
-# Capturing the user event
+# 8. Capturing the user event
 
 ## Learning Objectives
 
 - [ ] Add an event listener to a user input
 
-We’ve introduced our state, and our render works for different values of that state. But users of our website can’t change the searchTerm state themselves. We need to introduce a way for them to change the searchTerm state via the UI.<br>
+We’ve introduced our state, and our render works for different values of that state. But users of our website can’t change the `searchTerm` state themselves. We need to introduce a way for them to change the `searchTerm` state via the UI.<br>
 
-To listen for the search input event, we can add an event listener🧶(`An event listener waits for a specific event to occur. It runs in response to things like clicks, and key presses. We register listeners with addEventListener by passing the event name and a handling function.`).
+To listen for the search input event, we can add an event listener. (`An event listener waits for a specific event to occur. It runs in response to things like clicks, and key presses. We register listeners with addEventListener by passing the event name and a handling function.`).
 
 ```javascript
 const searchBox = document.getElementById("search");
@@ -374,7 +359,7 @@ When we call `addEventListener`, it doesn’t immediately execute the `handleInp
 
 Callback functions are essential for handling user interactions in web browsers. They allow our code to execute in response to an event. The browser listens for events and executes our callback functions at the right time. It is our job to define what should happen when those events occur.<br>
 
-# Re-rendering
+# 9. Re-rendering
 
 ## Learning Objectives
 
@@ -384,13 +369,14 @@ Callback functions are essential for handling user interactions in web browsers.
 When the “input” event fires, our handler function will run. Inside the handler we can access the updated input value: `const searchTerm = event.target.value;`
 
 So our key steps are:
+1. Add an input event listener to the search box.
+2. In the handler, get the `value` of input element.
+3. Set the new state based on this value.
+4. Call our `render` function again.
 
-- 1 Add an input event listener to the search box.
-- 2 In the handler, get the `value` of input element.
-- 3 Set the new state based on this value.
-- 4 Call our `render` function again.
+__⚠️One thing at a time!__
 
-<img width="809" height="132" alt="image" src="https://github.com/user-attachments/assets/0b38b62d-a2d1-4b74-ab84-8f1c6c3acb20" />
+But we’re not going to do all of these at once! Stop and implement just the first two steps (adding the event listener, and getting the value), and `console.log` the search term.
 
 We will make sure this works before we try to change the UI. Why? If we try to add the event listener and something doesn’t work, we will only have a little bit of code to debug.<br>
 
@@ -491,9 +477,9 @@ We should have a page like this:
 
 We want to change our search input handler to update `state.searchTerm` and call `render()` again.<br>
 
-Implement this and try searching. What happens? Play computer to work out why what’s happening isn’t what we expected.<br>
+Implement this and try searching what's happening or why what’s happening isn’t what we expected.<br>
 
-# Actually re-rendering
+# 10. Actually re-rendering
 
 ## Learning Objectives
 
@@ -514,7 +500,8 @@ Add this to your `render` function before you add new elements. Try using your p
 
 Oh no, our search box is gone!<br>
 
-<img width="750" height="120" alt="image" src="https://github.com/user-attachments/assets/a8756486-c327-4257-933a-c7ea3d550840" />
+### 🏋🏻‍♀️ Exercise: 
+Work out why our search box is gone. Remember what we just changed, and what we were trying to do by making that change.
 
 We removed our search box from the page because we removed everything from the entire document body.<br>
 
