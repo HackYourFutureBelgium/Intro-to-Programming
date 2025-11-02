@@ -580,3 +580,9 @@ textarea.addEventListener("keyup", updateCharacterLimit);
 ```
 __💡Remember :__
 When we think we’ve completed a goal or sub-goal, we should look at our code and see if we can improve it before we continue.
+
+
+# 14. Fundamentals of DOM 
+This tutorial covers the fundamentals of the Document Object Model (DOM) in JavaScript. 
+[![Watch the video](https://img.youtube.com/vi/c6IyCwAV6BY/0.jpg)](https://www.youtube.com/watch?v=c6IyCwAV6BY)
+
