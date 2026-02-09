@@ -1,14 +1,14 @@
 ## How do we know if you have completed Onboarding? 
 
 ### 🎯 You’ve achieved your learning objectives if you can:
-- [ ] Explain to someone how we use prep, homework, day plans, and success pages at HYF.
+- [ ] Explain to someone how we use prep, coursework, day plans, and success pages at HYF.
 - [ ] Track changes to data (your code) over time with Git and GitHub.
 - [ ] Validate data with HTML forms.
 - [ ] Analyse structured data with SQL in a spreadsheet.
 
 
 ### 💯 To complete any module, you must:
-- [x] Do your work: complete all mandatory coursework/homework issues
+- [x] Do your work: complete all mandatory coursework issues
 - [x] Come to class
 
 
