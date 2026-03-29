@@ -10,8 +10,8 @@ function collectNumbers(list) {
 
     const numbersOnly = [];
     for (const item of list) {
-        if (item === 'string') {
-            numbersOnly.push(item);
+if (typeof item === 'number') {
+       numbersOnly.push(item);
         }
     }
     return numbersOnly;

@@ -6,5 +6,8 @@
 const cities = ["Manchester", "London","Birmingham","Cape Town","Glasgow"];
 const result = cities.push("Liverpool","Sheffield");
 
+// My prediction:
+// result = 7, because push() returns the new length
+// cities will now have 7 elements
 console.log(`The result is ${result}`);
 console.log("cities now looks like this: ",cities);

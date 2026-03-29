@@ -10,6 +10,10 @@ ingredientsCopy.push('pasta','salt','pepper');
 const otherRecipe = ["olive oil","tomatoes",'garlic','onion', 'carrot','pasta','salt','pepper'];
 
 console.log(ingredients === ingredientsCopy);
+// → true, because both variables point to the same array in memory
 console.log(ingredients === otherRecipe);
+// → false, because otherRecipe is a completely new array
 console.log(otherRecipe === ingredientsCopy);
+// → false, different arrays in memory
 console.log(otherRecipe.length === ingredients.length);
+// → true, both have 8 elements

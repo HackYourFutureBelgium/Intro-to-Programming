@@ -6,6 +6,10 @@
 // Don't run the code until you've predicted and explained the whole file.
 // Then check your prediction and explanation by running the code
 
+
+// My prediction:
+// Loop 1: logs each CHARACTER one by one (for..of on a string)
+// Loop 2: logs each WORD one by one (for..of on an array from split(" "))
 const sentence = "I really enjoy ice cream";
 
 for (const part of sentence) {
