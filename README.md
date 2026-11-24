@@ -9,6 +9,8 @@ A pre-requisite of this module is having completed Hack Your Future’s Intro to
 
 
 ## Planning
+🗺️ **Onboarding mind map:** every week 1-3 assignment on one interactive page. [Open it](https://hackyourfuturebelgium.github.io/Intro-to-Programming/1-Onboarding/mind-map/) · [source](/1-Onboarding/mind-map/)
+
 | Week | Topic                                                                                                             | Preparation                         | Lesson plan                         | Coursework                      |
 | ---- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------- |
 | 1 | **Version Control**  | [Preparation](/1-Onboarding/Week%201/preparation.md) | [Lesson plan](/1-Onboarding/Week%201/lesson-plan.md) | [Coursework](/1-Onboarding/Week%201/coursework.md) |
