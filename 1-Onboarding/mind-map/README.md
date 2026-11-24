@@ -8,7 +8,7 @@ An interactive map of every assignment in the Onboarding module (weeks 1-3): pre
 
 **Open it:** https://hackyourfuturebelgium.github.io/Intro-to-Programming/1-Onboarding/mind-map/
 
-(Requires GitHub Pages to be enabled for this repository: Settings → Pages → Deploy from a branch → `main` / root.)
+Published by `.github/workflows/pages.yml`, which deploys only this folder. One-time setup by a repo admin: Settings → Pages → Source: **GitHub Actions**. The workflow runs when files in this folder change on `main`, or manually from the Actions tab.
 
 ## Updating
 
