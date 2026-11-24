@@ -5,6 +5,7 @@ on:
     paths: ["1-Onboarding/mind-map/**"]
   workflow_dispatch:
 permissions:
+  actions: read
   contents: read
   pages: write
   id-token: write
