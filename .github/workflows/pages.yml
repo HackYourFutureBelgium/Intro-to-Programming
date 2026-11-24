@@ -1,0 +1,22 @@
+name: Publish mind map
+on:
+  push:
+    branches: [main]
+    paths: ["1-Onboarding/mind-map/**"]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency: { group: pages, cancel-in-progress: true }
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: { name: github-pages, url: "${{ steps.d.outputs.page_url }}" }
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p _site/1-Onboarding && cp -r 1-Onboarding/mind-map _site/1-Onboarding/
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: _site }
+      - id: d
+        uses: actions/deploy-pages@v4
